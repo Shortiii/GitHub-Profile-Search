@@ -1,0 +1,165 @@
+/* Global styles */
+body {
+  background-color: white;
+  color: black;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition */
+}
+
+body.dark {
+  background-color: black;
+  color: white;
+}
+a {
+  text-decoration: none; /* Remove underline */
+  color: inherit; /* Inherit color from parent */
+  transition: color 0.3s; /* Smooth transition for color change */
+}
+
+a:hover {
+  color: gray; /* Change color on hover for better visibility */
+}
+
+/* Flexbox layout for the app container */
+.app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+}
+.container h1 {
+  font-size: 32px;
+}
+
+/* Button container positioned at the top-right */
+.toggle-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  text-align: right;
+}
+.toggle-container h2 {
+  margin-bottom: 5px;
+}
+
+/* Button styling */
+.toggle-btn {
+  padding: 15px;
+  background-color: black;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+body.dark .toggle-btn {
+  background-color: white;
+  color: black;
+}
+
+.toggle-btn:hover {
+  opacity: 0.9;
+}
+
+/* User Profile styles */
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  background: white;
+  transition: background 0.3s;
+}
+
+body.dark .user-profile {
+  background: #333;
+  color: #fff;
+}
+.repo-list h3 {
+  font-size: 24px;
+}
+.repo-list p {
+  font-size: 16px;
+}
+.repo-list a {
+  font-size: 18px;
+  font-weight: 600;
+}
+/* Image styling */
+.user-avatar {
+  width: 100%; /* Full width of the container */
+  max-width: 120px; /* Default maximum width for the avatar */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 50%; /* Circular avatar */
+}
+
+/* Responsive Styles */
+@media (min-width: 768px) {
+  /* Tablet and Laptop Styles */
+  .user-avatar {
+    max-width: 180px; /* Larger avatar for tablets and laptops */
+  }
+
+  .user-profile h2 {
+    font-size: 24px; /* Increase header font size */
+  }
+
+  .user-profile p {
+    font-size: 18px; /* Increase paragraph font size */
+  }
+}
+
+@media (max-width: 767px) {
+  /* Mobile Styles */
+  .container h1 {
+    font-size: 28px;
+    margin-top: 65px;
+  }
+  .toggle-container {
+    top: 5px;
+    right: 10px;
+    text-align: right;
+  }
+  .toggle-container h2 {
+    font-size: 16px;
+  }
+  .toggle-container button {
+    padding: 8px;
+    font-size: 14px;
+  }
+  .user-avatar {
+    max-width: 100px; /* Smaller avatar for mobile */
+  }
+
+  .user-profile h2 {
+    font-size: 18px; /* Decrease header font size */
+  }
+  .repo-list {
+    padding: 5px;
+  }
+  .user-profile p {
+    font-size: 14px; /* Decrease paragraph font size */
+  }
+  .user-profile {
+    padding: 0;
+    max-width: 90%;
+  }
+  .form-bar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
