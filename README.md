@@ -34,6 +34,6 @@ Ensure you have the following installed on your machine:
    Open your terminal and run:
 
    ```bash
-   git clone https://github.com/yourusername/github-profile-search.git
+   git clone https://github.com/Shortiii/GitHub-Profile-Search
    cd github-profile-search
    ```
