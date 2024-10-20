@@ -33,7 +33,7 @@ const UserPage = () => {
 
   return user ? (
     <div className="container mx-auto p-4">
-      <UserProfile user={user} />
+      <UserProfile username={user} />
       <RepositoryList repos={repos} onNextPage={loadMoreRepos} />
     </div>
   ) : (

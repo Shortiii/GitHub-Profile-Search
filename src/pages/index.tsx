@@ -1,8 +1,7 @@
-// src/pages/index.tsx
 import { useState } from "react";
-import UserProfile from "@/Components/UserProfile";
-import RepositoryList from "@/Components/RepositoryList";
-import SearchBar from "@/Components/SearchBar";
+import UserProfile from "@/components/UserProfile";
+import RepositoryList from "@/components/RepositoryList";
+import SearchBar from "@/components/SearchBar";
 
 const HomePage = () => {
   const [username, setUsername] = useState<string | null>(null);
@@ -12,11 +11,11 @@ const HomePage = () => {
   };
 
   return (
-    <div className="container mx-auto p-8">
-      <h1 className="text-4xl font-bold mb-6 text-center">
-        GitHub Profile Search
-      </h1>
+    <div className="container mx-auto p-4">
+      <h1 className="text-3xl font-bold mb-4">GitHub Profile Search</h1>
+
       <SearchBar onSearch={handleSearch} />
+
       {username && (
         <>
           <UserProfile username={username} />
