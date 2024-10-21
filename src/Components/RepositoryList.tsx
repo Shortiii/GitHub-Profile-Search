@@ -1,43 +1,29 @@
-// src/components/RepoList.tsx
-import React, { useState, useEffect } from "react";
-import { fetchUserRepos } from "../lib/api";
+// src/components/RepositoryList.tsx
+import React, { useState } from "react"; // Make sure useState is imported
 
-const RepositoryList = ({ username }: { username: string }) => {
-  const [repos, setRepos] = useState<any[]>([]);
-  const [page, setPage] = useState(1);
-  const [hasMore, setHasMore] = useState(true);
+interface RepositoryListProps {
+  username: string;
+  repos: any[]; // Adjust the type according to your repo structure
+  onNextPage: () => void;
+}
+
+const RepositoryList: React.FC<RepositoryListProps> = ({
+  username,
+  repos,
+  onNextPage,
+}) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const loadRepos = async () => {
-      try {
-        setLoading(true);
-        setError(null);
-
-        const newRepos = await fetchUserRepos(username, page);
-        setRepos((prevRepos) => [...prevRepos, ...newRepos]);
-
-        if (newRepos.length < 30) {
-          setHasMore(false);
-        }
-      } catch (error: any) {
-        setError("Failed to load repositories");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    loadRepos();
-  }, [page, username]);
-
   const handleLoadMore = () => {
-    setPage((prevPage) => prevPage + 1);
+    setLoading(true);
+    onNextPage(); // Call the onNextPage function passed as a prop
+    setLoading(false);
   };
 
   return (
     <div className="repo-list">
-      <h3 className=" font-semibold mb-4">Repositories</h3>
+      <h3 className="font-semibold mb-4">Repositories for {username}</h3>
 
       {error && <p className="text-red-500">{error}</p>}
 
@@ -62,16 +48,12 @@ const RepositoryList = ({ username }: { username: string }) => {
 
       {loading && <p>Loading repositories...</p>}
 
-      {hasMore && !loading && (
-        <button
-          onClick={handleLoadMore}
-          className="mt-4 px-4 py-2 bg-blue-600 text-white rounded"
-        >
-          Load More
-        </button>
-      )}
-
-      {!hasMore && <p>No more repositories to load.</p>}
+      <button
+        onClick={handleLoadMore}
+        className="mt-4 px-4 py-2 bg-blue-600 text-white rounded"
+      >
+        Load More
+      </button>
     </div>
   );
 };
